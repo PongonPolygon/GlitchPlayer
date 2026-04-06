@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>GlitchHub Video Player</title>
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Varela+Round&display=swap');
+            
+            html,
+            body {
+                background-color: black;
+                color: black;
+                margin: 0;
+                font-family: 'Varela Round';
+                font-size: 40px;
+            }
+            .mainBody {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100dvh;
+                overflow: hidden;
+            }
+            .videoArea {
+                aspect-ratio: 16 / 9;
+                width: min(100vw, 177.78dvh);
+                max-height: 100dvh;
+                position: relative;
+                justify-content: center;
+                align-items: center;
+            }
+            .video {
+                width: 100%;
+                height: 100%;
+            }
+            .videoControlsBody {
+                background-color: rgba(0, 0, 0, 1);
+                backdrop-filter: blur(5px);
+                height: 1rem;
+                width: 95%;
+                display: flex;
+                position: absolute;
+                bottom: 2.5%;
+                align-items: center;
+                justify-content: left;
+                gap: 0.2rem;
+                padding: 0.1rem;
+                border-radius: .75rem;
+                transition: opacity 0.5s;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .videoControlsBody.hidden {
+                opacity: 0;
+            }
+            .button {
+                height: 1rem;
+                width: 1rem;
+                background-image: url(images/pauseButton.svg);
+                background-size: 60%;
+                background-repeat: no-repeat;
+                background-position-x: 50%;
+                background-position-y: 50%;
+                background-color: transparent;
+                border: none;
+                border-radius: 0.5rem;
+                cursor: pointer;
+                filter: drop-shadow(0px 0px 0.2rem rgba(0, 0, 0, 1));
+                outline: none;
+                
+                transition:
+                    background-color .25s,
+                    background-image .25s;
+            }
+            .button:hover {
+                background-color: rgba(255, 255, 255, 0.25);
+            }
+            .fullscreenButton {
+                background-image: url(images/fullscreen.svg);
+            }
+            
+            .warningBody {
+                display: none;
+                width: 100vw;
+                height: 100vh;
+                color: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                line-height: 0;
+                overflow: clip;
+            }
+            .warningBodyText {
+                font-family: 'Varela Round';
+                font-size: 5cqmin;
+                border: none;
+                outline: none;
+            }
+            .warningBodyButton {
+                font-family: 'Varela Round';
+                font-size: 5cqmin;
+                margin-top: 1rem;
+            }
+            
+            .timeBarBG {
+                height: 0.2rem;
+                flex: 1;
+                min-width: 0;
+                background-color: #333333;
+                border-radius: .2rem;
+                filter: drop-shadow(0px 0px 0.2rem rgba(0, 0, 0, 1));
+                cursor: pointer;
+            }
+            .timeBarThumb {
+                background-color: #ffffff;
+                width: 0.4rem;
+                height: 0.4rem;
+                border-radius: 100%;
+                margin-top: -.1rem;
+                opacity: 1;
+                transition: opacity 0.25s;
+                margin-left: -0.2rem;
+                user-select: none;
+                position: absolute;
+                
+            }
+            .timeBarPrev {
+                width: 0%;
+                height: 100%;
+                background-color: #ffffff;
+                border-radius: .4rem;
+                position: absolute;
+            }
+            .timeBarPrevLoad {
+                width: 0%;
+                height: 100%;
+                background-color: #696969;
+                border-radius: .4rem;
+            }
+            .timeBarSpacer {
+                width: 0rem;
+            }
+            
+            .numberShow {
+                filter: drop-shadow(0px 0px 0.2rem rgba(0, 0, 0, 1));
+                color: white;
+                font-size: 0.5em;
+                user-select: none;
+                align-items: center;
+                justify-content: center;
+            }
+            .currentTimeDiv {
+                display: flex;
+            }
+            
+            .volumeBody {
+                position: absolute;
+                background-color: rgba(0, 0, 0, 1);
+                width: 1rem;
+                height: 0rem;
+                bottom: 1.5rem;
+                left: 0rem;
+                transition: height 0.25s, padding 0.25s, left 0.25s;
+                padding: 0rem;
+                border-radius: 0.75rem;
+            }
+            .volumeBody.shown {
+                height: 5rem;
+                left: 0rem;
+                padding: 0.1rem;
+            }
+            .volumeHoverDetect {
+                position: absolute;
+                background-color: rgba(255, 255, 255, 0);
+                width: 1rem;
+                height: 1rem;
+                bottom: 0.1rem;
+                right: 2.45rem;
+                padding: 0rem;
+                border-radius: 0.75rem;
+                
+                transition: padding 0.25s, right 0.25s, bottom 0.25s;
+            }
+            .volumeHoverDetect.shown {
+                padding: 0.1rem;
+                height: 6.5rem;
+                right: 2.35rem;
+                bottom: 0rem;
+            }
+            .volumeSpacer {
+                width: 1rem;
+                height: 1rem;
+            }
+            .volumeButton {
+                background-image: url(images/volumeMax.svg);
+                position: absolute;
+                bottom: 0rem;
+                transition: bottom 0.25s;
+            }
+            .volumeButton.open {
+                bottom: 0.1rem;
+            }
+            
+            .settingsButton {
+                background-image: url(images/settings.svg);
+                
+                transition: transform 0.25s;
+            }
+            .settingsButton.open {
+                transform: rotate(-45deg);
+            }
+            
+            .settingsBody {
+                background-color: rgba(0, 0, 0, 1);
+                width: 6rem;
+                height: 0rem;
+                position: absolute;
+                display: flex;
+                right: 0.2rem;
+                bottom: 1.5rem;
+                border-radius: .75rem;
+                padding: 0rem;
+                transition: padding 0.25s, right 0.25s, height 0.25s;
+            }
+            .settingsBody.shown {
+                padding: 0.1rem;
+                right: 0.1rem;
+                height: 8rem;
+            }
+            
+            .hiddenCursor {
+                cursor: none;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="area" class="mainBody">
+            
+            <!-- actual video area for playback and such -->
+            <div id="videoArea" class="videoArea">
+                <video id="video" class="video">
+                Your browser doesn't support videos.
+                    <source id="videoSource">
+                </video>
+                <div id="controlsBody" class="videoControlsBody">
+                    <button id="playButton" class="button playButton"></button>
+                    
+                    <div class="currentTimeDiv" id="currentTimeDiv">
+                        <span id="currentTimeVisual" class="numberShow">0:00</span>
+                        <span class="numberShow" style="color: gray">/</span>
+                        <span id="totalTimeVisual" class="numberShow" style="color: gray">0:00</span>
+                    </div>
+                    
+                    <div class="timeBarSpacer"></div>
+                    <div id="timeBarBG" class="timeBarBG">
+                        <div id="timeBarThumb" class="timeBarThumb"></div>
+                        <div id="timeBarPrev" class="timeBarPrev"></div>
+                        <div id="timeBarLoad" class="timeBarPrevLoad"></div>
+                    </div>
+                    <div class="timeBarSpacer"></div>
+                    
+                    <div class="volumeSpacer"></div>
+                    
+                    <!-- so that z-indexing looks okay, we place
+                    volume down below settings, with the spacer up here -->
+                    
+                    <button id="settingsButton" class="button settingsButton"></button>
+                    <div id="settingsBody" class="settingsBody"></div>
+                    
+                    <div id="volumeHoverDetect" class="volumeHoverDetect">
+                        <button id="volumeButton" class="button volumeButton"></button>
+                        <div id="volumeBody" class="volumeBody"></div>
+                    </div>
+                    
+                    <button id="fullscreenButton" class="button fullscreenButton"></button>
+                </div>
+            </div>
+            
+            <!-- warning for ppl who didnt add a video -->
+            <div id="warningBody" class="warningBody">
+                <p style="font-size: 15cqmin;">Whoops!</p>
+                <p style="font-size: 5cqmin; line-height: normal;">Looks like you (or the embeder) forgot to provide a video URL, or the selected URL does not source a valid video!</p>
+                <p style="font-size: 5cqmin; line-height: normal; margin-top: 0;">Either notify the creator of the page, or paste the URL here!</p>
+                <input id="warningText" type="text" class="warningBodyText" placeholder="Video URL here...">
+                <br>
+                <button id="warningButton" class="warningBodyButton">Watch!</button>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
