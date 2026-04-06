@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="100"
+   height="100"
+   viewBox="0 0 26.458333 26.458333"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1">
+    <path
+       id="path1"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke-width:6.85632;stroke-linecap:round;stroke-linejoin:bevel"
+       d="m 13.229167,3.6291674 a 9.603501,9.603501 0 0 0 -9.6032204,9.6032206 9.603501,9.603501 0 0 0 9.6032204,9.60322 9.603501,9.603501 0 0 0 9.60322,-9.60322 9.603501,9.603501 0 0 0 -9.60322,-9.6032206 z m 0,4.6959605 a 4.9075651,4.9075651 0 0 1 4.907259,4.9072601 4.9075651,4.9075651 0 0 1 -4.907259,4.907258 4.9075651,4.9075651 0 0 1 -4.9072599,-4.907258 4.9075651,4.9075651 0 0 1 4.9072599,-4.9072601 z" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke-width:2.046;stroke-linecap:round;stroke-linejoin:bevel"
+       d="M 9.7265625,2.0839844 8.7285156,3.734375 10.767578,4.2988281 11.150391,3.8242188 11.53125,4.2988281 13.572266,3.734375 12.574219,2.0839844 h -1.423828 z"
+       id="path2"
+       transform="matrix(1.2390562,0,0,2.4050319,-0.5867942,-4.8457439)" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke-width:2.046;stroke-linecap:round;stroke-linejoin:bevel"
+       d="M 9.7265625,2.0839844 8.7285156,3.734375 10.767578,4.2988281 11.150391,3.8242188 11.53125,4.2988281 13.572266,3.734375 12.574219,2.0839844 h -1.423828 z"
+       id="path2-2"
+       transform="matrix(-1.2390562,0,0,-2.4050319,27.045127,31.277132)" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke-width:2.046;stroke-linecap:round;stroke-linejoin:bevel"
+       d="M 9.7265625,2.0839844 8.7285156,3.734375 10.767578,4.2988281 11.150391,3.8242188 11.53125,4.2988281 13.572266,3.734375 12.574219,2.0839844 h -1.423828 z"
+       id="path3"
+       transform="matrix(0,1.2390562,-2.4050319,0,31.290605,-0.60026687)" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke-width:2.046;stroke-linecap:round;stroke-linejoin:bevel"
+       d="M 9.7265625,2.0839844 8.7285156,3.734375 10.767578,4.2988281 11.150391,3.8242188 11.53125,4.2988281 13.572266,3.734375 12.574219,2.0839844 h -1.423828 z"
+       id="path4"
+       transform="matrix(0,-1.2390562,2.4050319,0,-4.8322713,27.031654)" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke-width:2.046;stroke-linecap:round;stroke-linejoin:bevel"
+       d="M 9.7265625,2.0839844 8.7285156,3.734375 10.767578,4.2988281 11.150391,3.8242188 11.53125,4.2988281 13.572266,3.734375 12.574219,2.0839844 h -1.423828 z"
+       id="path7"
+       transform="matrix(-0.87614505,0.87614505,-1.7006143,-1.7006143,35.769891,16.217701)" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke-width:2.046;stroke-linecap:round;stroke-linejoin:bevel"
+       d="M 9.7265625,2.0839844 8.7285156,3.734375 10.767578,4.2988281 11.150391,3.8242188 11.53125,4.2988281 13.572266,3.734375 12.574219,2.0839844 h -1.423828 z"
+       id="path8"
+       transform="matrix(0.87614505,-0.87614505,1.7006143,1.7006143,-9.311558,10.213688)" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke-width:2.046;stroke-linecap:round;stroke-linejoin:bevel"
+       d="M 9.7265625,2.0839844 8.7285156,3.734375 10.767578,4.2988281 11.150391,3.8242188 11.53125,4.2988281 13.572266,3.734375 12.574219,2.0839844 h -1.423828 z"
+       id="path11"
+       transform="matrix(0.87614505,0.87614505,-1.7006143,1.7006143,16.231172,-9.3250303)" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke-width:2.046;stroke-linecap:round;stroke-linejoin:bevel"
+       d="M 9.7265625,2.0839844 8.7285156,3.734375 10.767578,4.2988281 11.150391,3.8242188 11.53125,4.2988281 13.572266,3.734375 12.574219,2.0839844 h -1.423828 z"
+       id="path12"
+       transform="matrix(-0.87614505,-0.87614505,1.7006143,-1.7006143,10.227159,35.756419)" />
+  </g>
+</svg>
